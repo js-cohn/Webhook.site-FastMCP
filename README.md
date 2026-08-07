@@ -42,7 +42,7 @@ To use this with Claude Desktop, add the following to your `claude_desktop_confi
       "command": "uv",
       "args": [
         "--directory",
-        "/Users/josh/.config/mcpc/webhooksite-mcp",
+        "/Users/josh/Git/GitHub.com-jscohn/Webhook.site-FastMCP",
         "run",
         "server.py"
       ],

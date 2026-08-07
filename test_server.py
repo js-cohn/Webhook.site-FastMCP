@@ -5,7 +5,7 @@ import sys
 # Ensure src is in python path
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "src"))
 
-from webhooksite_mcp.server import mcp
+from webhook_mcp.server import mcp
 
 async def test_mcp_initialization():
     """Verify that FastMCP is properly initialized and all tools are registered."""
