@@ -37,7 +37,7 @@ def _handle_response(response: httpx.Response) -> Dict[str, Any]:
         # Include response body in error message if available
         try:
             error_body = response.json()
-        except Exception:
+        except ValueError:
             error_body = response.text
         raise RuntimeError(f"API Error ({response.status_code}): {error_body}") from e
     

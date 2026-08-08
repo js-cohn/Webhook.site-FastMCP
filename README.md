@@ -1,13 +1,14 @@
-# Webhook.site MCP Server
+# Webhook.site FastMCP
 
-A Model Context Protocol (MCP) server that bridges the [Webhook.site API](https://docs.webhook.site/api/about.html), allowing LLM agents and clients to programmatically create, read, update, and manage webhook tokens and their captured requests.
+A FastMCP-based Model Context Protocol (MCP) server for the [Webhook.site API](https://docs.webhook.site/api/about.html).
+It exposes the API as MCP tools for creating, reading, updating, and managing webhook tokens and their captured requests.
 
 ## Prerequisites
 
 - Python 3.12+
 - [uv](https://github.com/astral-sh/uv) (recommended) or pip
 
-## Setup & Configuration
+## Configuration
 
 Configure the following environment variables to authenticate and set defaults:
 
@@ -16,33 +17,32 @@ Configure the following environment variables to authenticate and set defaults:
 | `WEBHOOK_SITE_API_KEY` | *(Optional)* Your Webhook.site API key (required for premium accounts, custom actions, and private tokens). |
 | `WEBHOOK_SITE_TOKEN_ID` | *(Optional)* A default Webhook.site token UUID to fall back to when not explicitly provided to tools. |
 
-## Running the Server
+## Running
 
-### Direct Execution (with uv)
+### Direct execution
 ```bash
 uv run server.py
 ```
 
-### Installation
+### Install editable
 You can install this package in editable mode:
 ```bash
 uv pip install -e .
 ```
-This registers the CLI command `webhooksite-mcp`.
+This registers the CLI command `webhook-mcp`.
 
-## Integrating with MCP Clients
+## Claude Desktop example
 
-### Claude Desktop
 To use this with Claude Desktop, add the following to your `claude_desktop_config.json` (usually located at `~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
 
 ```json
 {
   "mcpServers": {
-    "webhooksite-mcp": {
+    "webhook-mcp": {
       "command": "uv",
       "args": [
         "--directory",
-        "/Users/josh/Git/GitHub.com-jscohn/Webhook.site-FastMCP",
+        "$HOME/.agents/Webhook.site-FastMCP",
         "run",
         "server.py"
       ],
@@ -55,7 +55,7 @@ To use this with Claude Desktop, add the following to your `claude_desktop_confi
 }
 ```
 
-## Available Tools
+## Available tools
 
 ### 1. `create_token`
 Creates a new Webhook.site token (URL / email address container).
@@ -116,7 +116,7 @@ Delete all or filtered requests captured by a Webhook.site token.
   - `date_to` *(string, optional)*: Filter to delete requests up to this date.
   - `query` *(string, optional)*: Filter to delete requests matching this query.
 
-## Available Resources
+## Resources
 
 ### `webhooksite://token/{token_id}/requests`
 Allows clients to retrieve the complete list of requests captured by the specified token in raw JSON format.
