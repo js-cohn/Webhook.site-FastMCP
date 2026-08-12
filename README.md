@@ -33,18 +33,18 @@ This registers the CLI command `webhook-mcp`.
 
 ## Claude Desktop example
 
-To use this with Claude Desktop, add the following to your `claude_desktop_config.json` (usually located at `~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
+To use this with Claude Desktop (or other MCP hosts), add the following configuration. 
+
+Using `sh -c` allows the use of `$HOME` (or other environment variables) dynamically across different user machines/setups, since most MCP hosts do not perform shell expansion on paths:
 
 ```json
 {
   "mcpServers": {
     "WebhookSite": {
-      "command": "uv",
+      "command": "sh",
       "args": [
-        "--directory",
-        "$HOME/.agents/Webhook.site-FastMCP",
-        "run",
-        "server.py"
+        "-c",
+        "uv --directory \"$HOME/.agents/Webhook.site-FastMCP\" run server.py"
       ],
       "env": {
         "WEBHOOK_SITE_API_KEY": "your-api-key-here",
@@ -54,6 +54,8 @@ To use this with Claude Desktop, add the following to your `claude_desktop_confi
   }
 }
 ```
+
+*Note: If you prefer not to use `sh -c`, replace `"command"` with `"uv"` and use the absolute path in the `"--directory"` argument.*
 
 ## Available tools
 
