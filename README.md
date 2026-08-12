@@ -14,7 +14,7 @@ Configure the following environment variables to authenticate and set defaults:
 
 | Environment Variable | Description |
 |---|---|
-| `WEBHOOK_SITE_API_KEY` | *(Optional)* Your Webhook.site API key (required for premium accounts, custom actions, and private tokens). |
+| `WEBHOOK_SITE_API_KEY` | *(Optional)* Your [Webhook.site API key](https://webhook.site/api-keys) (required for premium accounts, custom actions, and private tokens). |
 | `WEBHOOK_SITE_TOKEN_ID` | *(Optional)* A default Webhook.site token UUID to fall back to when not explicitly provided to tools. |
 
 ## Running
