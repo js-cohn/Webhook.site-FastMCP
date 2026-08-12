@@ -38,7 +38,7 @@ To use this with Claude Desktop, add the following to your `claude_desktop_confi
 ```json
 {
   "mcpServers": {
-    "webhook-mcp": {
+    "WebhookSite": {
       "command": "uv",
       "args": [
         "--directory",
